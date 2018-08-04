@@ -1,0 +1,1 @@
+docker exec -i deployfolder_stocks_1 node ../SuggestedStocks/server/database/seeder.js

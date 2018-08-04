@@ -1,0 +1,27 @@
+# version: '3'
+# services: 
+#   database:
+#     build: database/
+#     image: mysql/mysql-server:5.7
+#     ports: ['3306:3306']
+#     environment: 
+#       MYSQL_ROOT_PASSWORD: 'newpassword'
+#       MYSQL_DATABASE: 'recommendedStocks'
+#   stocks: 
+#     build: SuggestedStocks/
+#     depends_on: ['database']
+#     ports: ['8080:8080']
+version: '3'
+services: 
+  stocks:
+    build: SuggestedStocks/
+    depends_on: 
+      - database
+    ports: 
+      - '8080:8080'
+  database: 
+    build: database/
+    environment: 
+      MYSQL_DATABASE: recommendedStocks
+      MYSQL_ROOT_PASSWORD: 'newpass'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
